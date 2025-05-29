@@ -8,7 +8,7 @@ A FastAPI-based service to download Instagram Reels videos via a simple POST end
 
    ```bash
    git clone <repo-url>
-   cd insta_download
+   cd video_downloader
    ```
 
 2. **Create and activate a virtual environment:**
@@ -41,7 +41,23 @@ A FastAPI-based service to download Instagram Reels videos via a simple POST end
 - **Response:**
   - `success`: true/false
   - `message`: status message
-  - `file_path`: path to the downloaded file (if successful)
+  - `download_url`: static file download url (if successful)
+
+
+- **Endpoint:** `POST /youtube/download/`
+- **Request Body:**
+  ```json
+  {
+    "url": "https://youtu.be/VIDEO_ID/"
+  }
+  ```
+- **Response:**
+  - `success`: true/false
+  - `message`: status message
+  - `download_url`: static file download url (if successful)
+
+
+
 
 ## Project Structure
 
