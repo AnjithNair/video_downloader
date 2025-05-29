@@ -2,19 +2,19 @@ import os
 import logging
 from fastapi import Request
 from fastapi import APIRouter, HTTPException, status
-from app.models.insta import InstaDownloadRequest, InstaDownloadResponse
-from app.services.downloader import download_instagram_reel
+from app.models.youtube import YoutubeDownloadRequest, YoutubeDownloadResponse
+from app.services.downloader import download_youtube_video
 
-router = APIRouter(prefix="/insta", tags=["Instagram"])
+router = APIRouter(prefix="/youtube", tags=["youtube"])
 
 
-@router.post("/download/", response_model=InstaDownloadResponse)
-async def download_reel(request: InstaDownloadRequest, fastapi_request: Request):
+@router.post("/download/", response_model=YoutubeDownloadResponse)
+async def download_video(request: YoutubeDownloadRequest, fastapi_request: Request):
     try:
-        video_path = await download_instagram_reel(request.url)
+        video_path = await download_youtube_video(request.url)
         filename = os.path.basename(video_path)
         download_url = str(fastapi_request.base_url) + f"downloads/{filename}"
-        return InstaDownloadResponse(success=True, message="Download successful", download_url=download_url)
+        return YoutubeDownloadResponse(success=True, message="Download successful", download_url=download_url)
     except ValueError as ve:
         logging.error(f"Invalid URL: {ve}")
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(ve))

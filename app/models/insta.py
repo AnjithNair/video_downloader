@@ -13,4 +13,4 @@ class InstaDownloadRequest(BaseModel):
 class InstaDownloadResponse(BaseModel):
     success: bool
     message: str
-    file_path: Optional[str] = None
+    download_url: Optional[str] = None

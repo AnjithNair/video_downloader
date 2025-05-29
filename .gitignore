@@ -4,3 +4,5 @@ app/models/__pycache__/insta.cpython-312.pyc
 app/__pycache__/main.cpython-312.pyc
 app/services/__pycache__/downloader.cpython-312.pyc
 app/routers/__pycache__/insta.cpython-312.pyc
+app/routers/__pycache__/youtube.cpython-312.pyc
+app/models/__pycache__/youtube.cpython-312.pyc

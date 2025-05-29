@@ -10,6 +10,12 @@ async def download_instagram_reel(url: str) -> str:
     loop = asyncio.get_event_loop()
     return await loop.run_in_executor(None, _download, url)
 
+async def download_youtube_video(url: str) -> str:
+    if not (url.startswith("https://www.youtube.com/") or url.startswith("https://youtu.be/")):
+        raise ValueError("Invalid YouTube video URL")
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, _download, url)
+
 def _download(url: str) -> str:
     ydl_opts = {
         'outtmpl': os.path.join(DOWNLOAD_DIR, '%(id)s.%(ext)s'),
