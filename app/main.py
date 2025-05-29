@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from app.routers import insta, youtube      
+from app.routers import insta, youtube, tiktok
 import os
 
 app = FastAPI()
@@ -12,4 +12,5 @@ app.mount("/downloads", StaticFiles(directory="downloads"), name="downloads")
 
 app.include_router(insta.router)
 app.include_router(youtube.router)
+app.include_router(tiktok.router)
 

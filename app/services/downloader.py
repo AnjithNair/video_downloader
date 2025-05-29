@@ -26,3 +26,9 @@ def _download(url: str) -> str:
         info = ydl.extract_info(url, download=True)
         filename = ydl.prepare_filename(info)
     return filename
+
+async def download_tiktok_video(url: str) -> str:
+    if not (url.startswith("https://www.tiktok.com/") or "tiktok.com/@" in url):
+        raise ValueError("Invalid TikTok video URL")
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, _download, url)
