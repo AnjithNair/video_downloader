@@ -1,6 +1,6 @@
 # Instagram Reel Downloader API
 
-A FastAPI-based service to download Instagram Reels videos via a simple POST endpoint.
+A FastAPI-based service to download Instagram Reels and Youtube videos via POST endpoint.
 
 ## Setup Instructions
 
