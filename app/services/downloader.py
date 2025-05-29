@@ -19,7 +19,8 @@ async def download_youtube_video(url: str) -> str:
 def _download(url: str) -> str:
     ydl_opts = {
         'outtmpl': os.path.join(DOWNLOAD_DIR, '%(id)s.%(ext)s'),
-        'format': 'mp4/bestvideo',
+        'format': 'bestvideo+bestaudio/best',
+        'merge_output_format': 'mp4',
         'quiet': True
     }
     with YoutubeDL(ydl_opts) as ydl:
