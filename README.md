@@ -56,6 +56,18 @@ A FastAPI-based service to download Instagram Reels and Youtube videos via POST 
   - `message`: status message
   - `download_url`: static file download url (if successful)
 
+- **Endpoint:** `POST /tiktok/download/`
+- **Request Body:**
+  ```json
+  {
+    "url": "https://www.tiktok.com/@profile_name/video/VIDEO_ID"
+  }
+  ```
+- **Response:**
+  - `success`: true/false
+  - `message`: status message
+  - `download_url`: static file download url (if successful)
+
 
 
 
