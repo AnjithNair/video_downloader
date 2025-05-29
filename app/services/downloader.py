@@ -1,0 +1,22 @@
+import asyncio
+from yt_dlp import YoutubeDL
+import os
+DOWNLOAD_DIR = "downloads"
+os.makedirs(DOWNLOAD_DIR, exist_ok=True)
+
+async def download_instagram_reel(url: str) -> str:
+    if not url.startswith("https://www.instagram.com/reel/"):
+        raise ValueError("Invalid Instagram Reels URL")
+    loop = asyncio.get_event_loop()
+    return await loop.run_in_executor(None, _download, url)
+
+def _download(url: str) -> str:
+    ydl_opts = {
+        'outtmpl': os.path.join(DOWNLOAD_DIR, '%(id)s.%(ext)s'),
+        'format': 'mp4/bestvideo',
+        'quiet': True
+    }
+    with YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(url, download=True)
+        filename = ydl.prepare_filename(info)
+    return filename

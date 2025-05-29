@@ -1,0 +1,6 @@
+venv/
+downloads/
+app/models/__pycache__/insta.cpython-312.pyc
+app/__pycache__/main.cpython-312.pyc
+app/services/__pycache__/downloader.cpython-312.pyc
+app/routers/__pycache__/insta.cpython-312.pyc
